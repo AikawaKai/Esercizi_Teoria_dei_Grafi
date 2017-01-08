@@ -170,28 +170,34 @@ mentre la cardinalità dell'insieme potenza dell'insieme singoletto \{a\} è par
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Exercise \#\arabic{homeworkProblemCounter}] % Custom section title
-\lipsum[3] % Question
+\begin{homeworkProblem}[Esercizio 1.5] % Custom section title
+Quanto vale S(n,2)? Quanto vale S(n, n-1)?
 
 %--------------------------------------------
 
-\begin{homeworkSection}{(a)} % Section within problem
-\lipsum[4]\vspace{10pt} % Question
-
-\problemAnswer{ % Answer
-\lipsum[5]
+\problemAnswer{
+(i) Calcolando il caso base S(2,2) otteniamo
+\[
+S(2,2) = 1 = 2 ^{1}-1
+\]
+(Il numero di Stirling di seconda specie ha i casi speciali S(n,n) = S(n,1) = 1)
+\newline
+il caso S(3,2)
+\[
+S(3,2) = S(2,1) + 2S(2,2) = 1 + 2 = 3 = 2^{2}-1
+\]
+(dato che S(n,k) può essere calcolato come S(n-1,k-1) + kS(n-1,k)))
+\newline
+il caso S(4,2)
+\[
+S(4,2) = S(3,1) + 2S(3,2) = 1 + 6 = 7 = 2^{3}-1
+\]
+etc, possiamo affermare che S(n,2) è pari a 
+\[
+2^{n-1}-1
+\]
 }
-\end{homeworkSection}
-
-%--------------------------------------------
-
-\begin{homeworkSection}{(b)} % Section within problem
-\problemAnswer{ % Answer
-\lipsum[6]
-}
-\end{homeworkSection}
-
-%--------------------------------------------
+--------------------------
 
 \end{homeworkProblem}
 
