@@ -245,9 +245,18 @@ che rappresenta esattamente una partizione dell'insieme delle parti.
 %	PROBLEM 4
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
-\problemAnswer{ % Answer
-\lipsum[10]
+\begin{homeworkProblem}[Esercizio 1.7] % Roman numerals
+Quanto vale la somma degli elementi della n-esima riga del triangolo di tartaglia?
+
+\problemAnswer{
+Sapendo che ogni elemnto di una riga del triangolo di tartaglia è calcolabile come il binomiale
+\[
+{n \choose k}
+\]
+dove n è la riga in oggetto, e k è la posizione nella riga corrente, possiamo calcolare la somma degli elementi della n-esemia riga del triangolo di tartaglia come
+\[
+\sum_{k=0}^{n}{n \choose k}
+\]
 }
 \end{homeworkProblem}
 
