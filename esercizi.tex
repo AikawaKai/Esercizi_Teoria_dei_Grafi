@@ -196,6 +196,23 @@ etc, possiamo affermare che S(n,2) è pari a
 \[
 2^{n-1}-1
 \]
+\newline
+(ii) Partendo dal caso base S(2,1) otteniamo
+\[
+S(2,1) = 1
+\]
+il caso S(3,2)
+\[
+S(3,2) = S(2,1) + 2S(2,2) = 1 + 2 = 3 
+\]
+il caso S(4,3)
+\[
+S(4,3) = S(3,2) + 3S(3,3) = 3 + 3 = 6
+\]
+etc, possiamo dedurre che nel caso S(n,n-1), il numero di stirling è pari a
+\[
+\sum_{i=1}^{n-1} i
+\]
 }
 --------------------------
 
@@ -205,25 +222,20 @@ etc, possiamo affermare che S(n,2) è pari a
 %	PROBLEM 3
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[Prob. \Roman{homeworkProblemCounter}] % Roman numerals
+\begin{homeworkProblem}[Esercizio 1.6] % Roman numerals
+Verificare che la suddivisione dei sottoinsiemi di un insieme S a seconda del numero di elementi che essi contengono costituisce una partizione dell'insieme potenza di S.
 
-%--------------------------------------------
-
-\begin{homeworkSection}{\homeworkProblemName:~(a)} % Using the problem name elsewhere
-\problemAnswer{ % Answer
-\lipsum[7]
+\problemAnswer{
+Dato un insieme esempio S = \{a, b, c\}, il suo insieme delle parti è dato da
+\[
+\{a,b,c\}, \{a,b\}, \{a,c\}, \{b,c\}, \{a\}, \{b\}, \{c\}, 0
+\]
+Se raggruppiamo i sottoinsiemi a seconda del numero di elementi contengono otteniamo:
+\[
+|\{a,b,c\}|, |\{a,b\}, \{a,c\}, \{b,c\}|, |\{a\}, \{b\}|, |\{c\}|, |0|
+\]
+che rappresenta esattamente una partizione dell'insieme delle parti.
 }
-\end{homeworkSection}
-
-%--------------------------------------------
-
-\begin{homeworkSection}{\homeworkProblemName:~(b)}
-\lipsum[8]\vspace{10pt} % Question
-
-\problemAnswer{ % Answer
-\lipsum[9]
-}
-\end{homeworkSection}
 
 %--------------------------------------------
 
