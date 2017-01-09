@@ -312,7 +312,100 @@ Dimostrare che l'elemento di posto (i, j) del prodotto di n matrici triangolari 
 addendi.
 
 \problemAnswer{
-to do.
+Prima di tutto è importante ricordare una proprietà del valore $\frac{<n>_{i-j}}{(i-j)!}$, che può essere rappresentato come il binomiale
+\[
+{n+(i-j)-1 \choose i-j} = {n+(i-j)-1 \choose n-1}
+\]
+Proviamo a calcolare la matrice N, risultato del seguente prodotto di matrici triangolari inferiori
+\[
+N =
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right] 
+\cdot
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right]
+\cdot
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right] = 
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+3 & 1 & 0 \\
+6 & 3 & 1 \end{array} \right]
+\]
+che può essere scritta anche come il prodotto
+\[
+N =
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 2 & 1 \end{array} \right]
+\cdot
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right] = 
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+3 & 1 & 0 \\
+6 & 3 & 1 \end{array} \right]
+\]
+dato che la matrice parziale P è uguale a 
+\[
+P =
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right] 
+\cdot
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+1 & 1 & 1 \end{array} \right]
+=
+\left[
+\begin{array}{ccc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 2 & 1 \end{array} \right]
+\]
+. Calcolando passo passo i valori degli elementi in posizione (i=2,j=0), (i=2, j=1), (i=2, j=2) della matrice P, otteniamo
+\[
+(i=2, j=0) =  ( 1 \cdot 1 ) + ( 1 \cdot 1 ) + ( 1 \cdot 1 ) = 3 (addendi)
+\]
+\[
+(i=2, j=1) =  ( 1 \cdot 0 ) + ( 1 \cdot 1 ) + ( 1 \cdot 1 ) = 2 (addendi)
+\]
+\[
+(i=2, j=2) =  ( 1 \cdot 0 ) + ( 1 \cdot 0 ) + ( 1 \cdot 1 ) = 1 (addendi)
+\]
+che effettivamente corrispondono ai valori calcolati con il binomiale (n=2)
+\[
+{n+(i-j)-1 \choose n-1}
+\]
+\[
+(i=2, j= 0) = {2+(2-0)-1 \choose 2-1} = {3 \choose 1} = 3 
+\]
+\[
+(i=2, j= 1) = {2+(2-1)-1 \choose 2-1} = {2 \choose 1} = 2 
+\]
+\[
+(i=2, j= 2) = {2+(2-2)-1 \choose 2-1} = {1 \choose 1} = 1
+\]
 }
 \end{homeworkProblem}
 
