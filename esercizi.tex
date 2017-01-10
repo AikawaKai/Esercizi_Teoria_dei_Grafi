@@ -256,7 +256,7 @@ che rappresenta esattamente una partizione dell'insieme delle parti.
 Quanto vale la somma degli elementi della n-esima riga del triangolo di Tartaglia?
 
 \problemAnswer{
-Sapendo che ogni elemnto di una riga del triangolo di tartaglia è calcolabile come il binomiale
+Sapendo che ogni elemento di una riga del triangolo di tartaglia è calcolabile come il binomiale
 \[
 {n \choose k}
 \]
@@ -281,7 +281,7 @@ $n=3$:&    &  1 &    &  3 &    &  3 &    &  1\\\noalign{\smallskip\smallskip}
 $n=4$:&  1 &    &  4 &    &  6 &    &  4 &    &  1\\\noalign{\smallskip\smallskip}
 \end{tabular}
 \end{center}
-partendo dalla seconda riga e sommando gli elemnti di posto pari e di posto dispari otteniamo le coppie
+partendo dalla seconda riga e sommando gli elementi di posto pari e di posto dispari otteniamo le coppie
 \begin{gather}
 (1, 1)  \quad n = 1\\
 (2, 2)  \quad n = 2\\
@@ -446,17 +446,52 @@ e
 \[
 P(n,x) = 0 
 \]
-se n <= 0
+se n $\leq$ 0
 
 \problemAnswer{
-Ricordando che $P(n,x)$ non rappresenta altro che il numero in quanti modi possiamo ottenere il numero n sommando x numeri naturali, prendiamo ad esempio $P(5,2)$ che è uguale a
+Ricordando che $P(n,x)$ non rappresenta altro il numero di modi in cui possiamo ottenere il numero $n$ sommando $x$ numeri naturali, dimostriamo questa equazione per induzione, partendo dal caso base $P(2,1)$, che sappiamo valere 1 (2 è rappresentabile in un solo modo usando una singola cifra): 
 \[
-P(5,2) = 2
+P(2,1) = P(1,0) + P(1,1) = 0 + 1 = 1
 \]
-E cioè $2+3$ e $1+4$.
+($P(1,0)=0$ in quanto non esistono modi per rappresentare 1 con 0 cifre)
+Verifichiamolo ora per il caso n+1
 }
 \end{homeworkProblem}
-
-%----------------------------------------------------------------------------------------
+\begin{homeworkProblem}
+Dimostrare che 
+\[
+s(n,1) =(n-1)!
+\]
+\problemAnswer{
+Sappiamo che il fattoriale di $(n-1)$ si può scrivere anche come
+\[
+(n-1)! = (n-1) \cdot (n-2) \cdot ... \cdot 1
+\]
+e che generalmente
+\[
+s(n,k) = s(n-1, k-1) + (n-1) \cdot s(n-1,k)
+\]
+Svolgendo $s(n,1)$ otteniamo
+\[
+s(n,1) = s(n-1, 0) + (n-1) * s(n-1, 1)
+\]
+Ma dato che 
+\[
+s(n-1, 0) = 0
+\]
+Possiamo affermare quindi che
+\[
+s(n,1) = (n-1)\cdot s(n-1,1)
+\]
+e conseguentemente
+\[
+s(n-1, 1) = (n-2)\cdot s(n-2, 1)
+\]
+Calcolando quindi ricorsivamente $s(n-i, 1)$ fino a che $n-i =1$ (arrivando al caso $s(1,1)=1$ )otteniamo
+\[
+(n-1)\cdot(n-2)\cdot...\cdot 1 = (n-1)!
+\]
+}
+\end{homeworkProblem}%----------------------------------------------------------------------------------------
 
 \end{document}
