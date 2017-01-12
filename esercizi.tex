@@ -512,33 +512,21 @@ Dimostrare che
 s(n,1) =(n-1)!
 \]
 \problemAnswer{
-Sappiamo che il fattoriale di $(n-1)$ si può scrivere anche come
+Il numero di Stirling di prima specie indica il numero di cicli differenti ottenibili da un insieme di $n$ elementi distinti con $k$ cicli. Sapendo ciò possiamo affermare che per ottenere il numero di permutazioni con 1 solo ciclo, è necessario fissare uno degli elementi, e permturare gli altri. Come nell'esempio seguente, dove ho un insieme $A$ di cardinalità 4
 \[
-(n-1)! = (n-1) \cdot (n-2) \cdot ... \cdot 1
-\]
-e che generalmente
+A = \{a, b, c, d\}
+\] 
+dove fisso l'elemento $a$ e permuto gli altri $n-1$ elementi
+
+\[[a]bcd\]
+\[[a]bdc\]
+\[[a]cbd\]
+\[[a]cdb\]
+\[[a]dbc\]
+\[[a]dcb\]
+Che è uguale a $6$, e cioè $(4-1)!$. Quindi possiamo affermare che 
 \[
-s(n,k) = s(n-1, k-1) + (n-1) \cdot s(n-1,k)
-\]
-Svolgendo $s(n,1)$ otteniamo
-\[
-s(n,1) = s(n-1, 0) + (n-1) \cdot s(n-1, 1)
-\]
-Ma dato che 
-\[
-s(n-1, 0) = 0
-\]
-Possiamo affermare quindi che
-\[
-s(n,1) = (n-1)\cdot s(n-1,1)
-\]
-e conseguentemente
-\[
-s(n-1, 1) = (n-2)\cdot s(n-2, 1)
-\]
-Calcolando quindi ricorsivamente $s(n-i, 1)$ fino a che $n-i =1$ (arrivando al caso $s(1,1)=1$ )otteniamo
-\[
-(n-1)\cdot(n-2)\cdot...\cdot 1 = (n-1)!
+s(n,1) = (n-1)!
 \]
 }
 \end{homeworkProblem}%----------------------------------------------------------------------------------------
