@@ -183,25 +183,13 @@ Quanto vale S(n,2)? Quanto vale S(n, n-1)?
 %--------------------------------------------
 
 \problemAnswer{
-(i) Calcolando il caso base S(2,2) otteniamo
+(i) Di base sappiamo che il numero di stirling di seconda specie S(n,k) si ottiene come
 \[
-S(2,2) = 1 = 2 ^{1}-1
+S(n,k) = \frac{1}{k!}\sum_{i=0}^{k-1}(-1)^{i}\cdot {k \choose i} \cdot (k-i)^{n}
 \]
-(Il numero di Stirling di seconda specie ha i casi speciali S(n,n) = S(n,1) = 1)
-\newline
-il caso S(3,2)
+Dato che stiamo considerando il caso in cui $k=2$ abbiamo che 
 \[
-S(3,2) = S(2,1) + 2S(2,2) = 1 + 2 = 3 = 2^{2}-1
-\]
-(dato che S(n,k) può essere calcolato come S(n-1,k-1) + kS(n-1,k)))
-\newline
-il caso S(4,2)
-\[
-S(4,2) = S(3,1) + 2S(3,2) = 1 + 6 = 7 = 2^{3}-1
-\]
-etc, possiamo affermare che S(n,2) è pari a 
-\[
-2^{n-1}-1
+S(n,2) = \frac{(1 \cdot 1 \cdot 2^{n})}{2!} + \frac{(-1 \cdot 2 \cdot 1^{n})}{2!} = 2^{n-1}-1
 \]
 \newline
 (ii) Partendo dal caso base S(2,1) otteniamo
