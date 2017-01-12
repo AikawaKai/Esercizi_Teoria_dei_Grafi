@@ -304,6 +304,51 @@ e cioè polinomi i cui coefficienti sono gli elementi delle righe del triangolo 
 Secondo il teorema di Ruffini un polinomio è divisibile per il binomio (x-k) se e solo se $p(k) = 0$. Secondo il teorema del Resto, p(k) non è altro che il resto della divisione tra un polinomio e il binomio (x-k). Dato che nel nostro caso k=1, possiamo verificare che $p(1) = 0$ per ogni $p = (x-1)^n$, dato che mettere x a 1 corrisponde a sommare i coefficienti del polinomio, che come abbiamo verificando in partenza corrispondo ai coefficienti della riga n-esima del triangolo di tartaglia, alternati di segno per la posizione, e che quindi sommati portano a 0.
 }
 \end{homeworkProblem}
+\begin{homeworkProblem}[Esercizio 1.9]
+Dimostrare che, presi comunque $a,b,n \in N$
+\[
+(a+\sqrt{b})^n + (a-\sqrt{b})^n \in N
+\]
+\problemAnswer{
+Sapendo che il binomio di Newton è calcolato come
+\[
+(a+b)^n = \sum_{k=0}^{n}{n \choose k} a^{n-k}\cdot b^k
+\]
+Svolgendo singolarmente $(a+\sqrt{b})^n$ e $(a-\sqrt{b})^n$ otteniamo
+\[
+(a+\sqrt{b})^n = \sum_{k=0}^{n}{n \choose k} a^{n-k}\cdot (\sqrt{b})^{k}
+\]
+\[
+(a-\sqrt{b})^n = \sum_{k=0}^{n}{n \choose k} a^{n-k}\cdot (-\sqrt{b})^{k}
+\]
+quando k è pari il termine k-esimo dei due polinomi coincide (il segno negativo diventa positivo per il secondo termine del secondo binomio)
+\[
+(\sqrt{b})^{k} = (-\sqrt{b})^{k} = b^{k/2} \in N 
+\]
+poichè $k/2 \in N$.
+Mentre quando k è dispari abbiamo che  
+\[
+(\sqrt{b})^{k} +(-\sqrt{b})^{k} = 0
+\]
+che quindi porta all'eliminazione del termine k-esimo all'interno della sommatoria (i valori k-esimi sono i medesimi per i due binomi, ma opposti per segno).
+\newline
+Dato che $n-k \in N$
+\[
+{n \choose k} \in N
+\]
+\[
+a^{n-k} \in N
+\]
+Possiamo quindi affermare che comunque scelti $a,b,n \in N$, il termine k-esimo delle sommatoria (con k pari)
+\[
+{n \choose k} a^{n-k}\cdot (\sqrt{b})^{k} \in N
+\]
+e di conseguenza che
+\[
+(a+\sqrt{b})^n + (a-\sqrt{b})^n \in N
+\]
+}
+\end{homeworkProblem}
 \begin{homeworkProblem}[Esercizio 1.23]
 Dimostrare che l'elemento di posto (i, j) del prodotto di n matrici triangolari inferiori (di ordine arbitrario) è dato dalla somma di
 \[
