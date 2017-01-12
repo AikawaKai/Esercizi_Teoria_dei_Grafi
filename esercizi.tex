@@ -361,6 +361,14 @@ Prima di tutto è importante ricordare una proprietà del valore $\frac{<n>_{i-j
 \[
 {n+(i-j)-1 \choose i-j} = {n+(i-j)-1 \choose n-1}
 \]
+Inoltre data una matrice triangolare inferiore, il valore dell'elemento della matrice potenza $N^{n}$ in posizione $(i,j)$ è dato dalla formula ricorsiva:
+\[
+(i,j)^{n}=\sum_{k=0}^{(i-j)} (a_{ik}^{n-1}\cdot a_{kj})
+\]
+\begin{footnotesize}
+\textbf{Nota:} $(i,j)^{n}$ e $a_{ik}^{n-1}$ vanno intesoi come elementi della matrice $N^{n}$ e $N^{n-1}$, non come elementi elevati alla potenza n-esima
+\end{footnotesize}
+
 Proviamo a calcolare la matrice N, risultato del seguente prodotto di matrici triangolari inferiori
 \[
 N =
@@ -502,7 +510,7 @@ P(2,1) = P(1,0) + P(1,1) = 0 + 1 = 1
 Verifichiamolo ora per il caso n+1
 }
 \end{homeworkProblem}
-\begin{homeworkProblem}
+\begin{homeworkProblem}[Esercizio "Nuovo"]
 Dimostrare che 
 \[
 s(n,1) =(n-1)!
