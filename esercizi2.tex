@@ -30,6 +30,8 @@
 \usepackage[italian]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{array}
+\usepackage{float}
+\usepackage{multirow}
 \usepackage[usestackEOL]{stackengine}[2013-10-15]
 \def\x{\hspace{3ex}}    %BETWEEN TWO 1-DIGIT NUMBERS
 \def\y{\hspace{2.45ex}}  %BETWEEN 1 AND 2 DIGIT NUMBERS
@@ -167,6 +169,27 @@ Tabella degli insiemi stabili di un cammino $P_{n,k}$ al variare della lunghezza
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l|ccccccccc}
+$P_{n,k}$             & \multicolumn{10}{c|}{$k$}                                                                                                                                                                                                                              \\ \hline
+\multirow{10}{*}{$n$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8} \\ \cline{2-11} 
+                      & 0                     & 1                      &                        &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 1                     & 1                      & 1                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 2                     & 1                      & 2                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 3                     & 1                      & 3                      & 1                      &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 4                     & 1                      & 4                      & 3                      &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 5                     & 1                      & 5                      & 6                      & 1                      &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 6                     & 1                      & 6                      & 10                     & 4                      &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 7                     & 1                      & 7                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 8                     & 1                      & 8                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{1-2}
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
+
 }
 \end{homeworkProblem}
 
