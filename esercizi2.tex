@@ -154,14 +154,14 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}[Esercizio 1] 
-Dimostrare che il numero di insiemi stabili di un cammino $P_n$ (dove $n$ indica il numero di vertici del cammino) ha la ricorrenza di Fibonacci
+Dimostrare che il numero di insiemi stabili $S$ di un cammino $P_{n}$ (dove $n$ indica il numero di vertici del cammino) ha la ricorrenza di \emph{Fibonacci}
 \[
-P_n = P_{n-1} + P_{n-2}
+S(P_n) = S(P_{n-1}) + S(P_{n-2})
 \]
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
-Per dimostrare la relazione tra il numero di set indipendenti di un cammino, basta verificare cosa accade all'aggiungere di un vertice ad un cammino $Pn$. Ad esempio dato il seguente cammino:
+Per dimostrare la relazione tra il numero di set indipendenti di un cammino e la sequenza di \emph{Fibonacci}, basta verificare cosa accade all'aggiungere di un vertice ad un cammino $P_n$. Ad esempio dato il seguente cammino:
 \begin{center}
 \begin{tikzpicture}
 
@@ -187,6 +187,11 @@ Cosa accadrebbe se aggiungessimo un nodo d? Avremmo il seguente path:
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
 \end{center}
+Sicuramente i set indipendenti precedentemente individuati con solo $a$, $b$, $c$ rimarrebbero. Quindi c'è qualcosa in più rispetto al cammino precedente. Ma cosa? Osservando il cammino ci rendiamo conto che il nodo aggiunto può generare set indipendenti con solo i nodi che non ha adiacenti, e cioè $a$, $b$. Ma quanti nuovi set indipendenti può generare ? Ne può generare tanti quanti sono i set generabili dal cammino composto solo da $a$, $b$. Questo perché per generarli posso aggiungere l'elemento $d$ ad ogni set presente in quest'ultimo cammino, e cioè $\{a, d\}$, $\{b, d\}$, $\{d\}$, dato che il cammino $a$ $b$ ha gli insiemi $\{a\}$, $\{b\}$ e l'insieme vuoto, come set indipendenti. Quindi possiamo dire che il numero di set indipententi di un cammino generico $P_n$ si può ottenre come somma dei set indipendenti ottenuti dal cammino meno un nodo, e dai set indipendenti ottenuti dal cammino meno due nodi
+\[
+S(P_n) = S(P_{n-1}) + S(P_{n-2})
+\]
+Che è effettivamente la ricorrenza di \emph{Fibonacci}.
 }
 \end{homeworkProblem}
 
@@ -197,6 +202,8 @@ Tabella degli insiemi stabili di un cammino $P_{n,k}$ al variare della lunghezza
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[H]
@@ -211,8 +218,8 @@ $P_{n,k}$             & \multicolumn{10}{c|}{$k$}                               
                       & 4                     & 1                      & 4                      & 3                      &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
                       & 5                     & 1                      & 5                      & 6                      & 1                      &                        &                        &                        &                        &                        \\ \cline{2-2}
                       & 6                     & 1                      & 6                      & 10                     & 4                      &                        &                        &                        &                        &                        \\ \cline{2-2}
-                      & 7                     & 1                      & 7                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
-                      & 8                     & 1                      & 8                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{1-2}
+                      & 7                     & 1                      & 7                      & 15                     & 10                     & 1                      &                        &                        &                        &                        \\ \cline{2-2}
+                      & 8                     & 1                      & 8                      & 21                     & 20                     & 5                      &                        &                        &                        &                        \\ \cline{1-2}
 \end{tabular}
 \caption{My caption}
 \label{my-label}
