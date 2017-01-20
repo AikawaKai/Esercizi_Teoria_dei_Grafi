@@ -31,6 +31,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{array}
 \usepackage{float}
+\usepackage{tikz}
 \usepackage{multirow}
 \usepackage[usestackEOL]{stackengine}[2013-10-15]
 \def\x{\hspace{3ex}}    %BETWEEN TWO 1-DIGIT NUMBERS
@@ -160,8 +161,35 @@ P_n = P_{n-1} + P_{n-2}
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
+Per dimostrare la relazione tra il numero di set indipendenti di un cammino, basta verificare cosa accade all'aggiungere di un vertice ad un cammino $Pn$. Ad esempio dato il seguente cammino:
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+
+\draw[-] (a) -- (b) -- (c);
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+Sappiamo che esistono 5 insiemi stabili, che sono dati dagli insiemi singoletto $\{a\}, \{b\}, \{c\}$, dall'insieme $\{a,c\}$ e dall'insieme vuoto.
+Cosa accadrebbe se aggiungessimo un nodo d? Avremmo il seguente path:
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+
+\draw[-] (a) -- (b) -- (c) -- (d);
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
 }
 \end{homeworkProblem}
+
 
 \begin{homeworkProblem}[Esercizio 1.1] 
 Tabella degli insiemi stabili di un cammino $P_{n,k}$ al variare della lunghezza del cammino $n$ e del numero $k$ di vertici non adiacenti.
