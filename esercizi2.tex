@@ -279,7 +279,7 @@ Scrivere un algoritmo capace di enumerare gli insiemi stabili di un grafo arbitr
 \vspace{10pt} % Question
 
 \problemAnswer{
-Prima di scrivere l'algoritmo, possiamo fare una considerazione: se consideriamo il grafo complementare del grafo in input, come nell'esempio seguente 
+Prima di scrivere l'algoritmo, possiamo fare una considerazione: se generiamo il grafo complementare del grafo in input, come nell'esempio seguente 
 \begin{center}
 \begin{tikzpicture}
 
@@ -306,23 +306,9 @@ otteniamo questo grafo
 \end{tikzpicture}
 \end{center}
 Se cerchiamo tutte le \emph{componenti connesse} di questo grafo (sottografi del grafo i cui vertici sono tutti collegati tra loro) otteniamo esattamente ciò che stiamo cercando e cioè i nostri set indipendenti, che nell'ordine sono $\{a\}, \{b\}, \{c\}, \{d\}, \{a, c\}, \{a, d\}, \{b, d\}$ e l'insieme vuoto.
-Questa proprietà del grafo complementare vale per qualsiasi tipo di grafo in input, che possiamo sfruttare per il nostro algoritmo.
-Per la rappresentazione del grafo in questo caso può essere utile utilizzare le \emph{liste di adiacenza}. Cioè ad ognuno dei nodi viene associata una lista che contiene tutti i nodi ad esso adiacenti, come nell'esempio seguente (riferito all'ultimo grafo)
-\begin{center}
-\begin{tikzpicture}
 
-  \node[draw, minimum size=5mm] (a) at (0, 0) {a};
-  \node[draw, minimum size=5mm] (c) at (1, 0) {c};
-  \node[draw, minimum size=5mm] (d) at (1.5, 0) {d};
-  
-  \node[draw, minimum size=5mm] (b) at (0, -1) {b};
-  \node[draw, minimum size=5mm] (dd) at (1, -1) {d};
 
-\draw[->] (a) -- (c);
-\draw[->] (b) -- (dd);
-\end{tikzpicture}
-\end{center}
-
+Questa proprietà del grafo complementare vale per qualsiasi tipo di grafo in input, che possiamo sfruttare per il seguente algoritmo
 \begin{center}
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -336,6 +322,63 @@ Per la rappresentazione del grafo in questo caso può essere utile utilizzare le
  }
 \end{algorithm}
 \end{center}
+che adesso spiegheremo nel dettaglio.
+}
+\problemAnswer{
+Per la rappresentazione del grafo può essere utile utilizzare le \emph{liste di adiacenza}. Cioè ad ognuno dei nodi viene associata una lista che contiene tutti i nodi ad esso adiacenti, come nell'esempio seguente
+\begin{center}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+
+\draw[dashed] (a) -- (c);
+\draw[dashed] (a) -- (d);
+\draw[dashed] (b) -- (d);
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tikzpicture}
+
+  \node[draw, minimum size=5mm] (a) at (0, 0) {a};
+  \node[draw, minimum size=5mm] (c) at (1, 0) {c};
+  \node[draw, minimum size=5mm] (d) at (1.5, 0) {d};
+  
+  \node[draw, minimum size=5mm] (b) at (0, -1) {b};
+  \node[draw, minimum size=5mm] (dd) at (1, -1) {d};
+  
+  \node[draw, minimum size=5mm] (cc) at (0, -2) {c};
+  \node[draw, minimum size=5mm] (aa) at (1, -2) {a};
+  
+  \node[draw, minimum size=5mm] (ddd) at (0, -3) {d};
+  \node[draw, minimum size=5mm] (aaa) at (1, -3) {a};
+  \node[draw, minimum size=5mm] (bb) at (1.5, -3) {b};
+
+\draw[->] (a) -- (c);
+\draw[->] (b) -- (dd);
+\draw[->] (cc) -- (aa);
+\draw[->] (ddd) -- (aaa);
+\end{tikzpicture}
+\end{center}
+\textbf{\emph{getCompGraph}(Graph)}
+
+Per ottenere il grafo complementare da questa rappresentazione basta semplicemente complementare le liste (e cioè inserire nella lista vuota tutti i vertici che \textbf{non} erano presenti nel grafo originale).
+\newline
+\newline
+\textbf{\emph{getTotalSet}(CompGraph)}
+
+Una volta poi ottenuto il grafo complemento si cominciano ad elencare tutti i sottoinsiemi di $k$ vertici (al variare di $k$ da 0 a $n$, che è il numero totale di vertici del grafo) per un totale di
+\[
+\sum_{k=0}^{n}\binom{n}{k}
+\]
+sottoinsiemi differenti.
+\newline
+\newline
+\textbf{\textit{IndipendentSet}(set, CompGraph)}
+
+Infine si verifica per ognuno di questi set di $k$ vertici se rappresentano un sottoinsieme completamente connesso (che corrisponde nel grafo complementare ad un set indipendente), e nel caso di esito positivo mandarlo nell'output.
 }
 \end{homeworkProblem}
 \begin{homeworkProblem}[Esercizio 2] 
