@@ -307,6 +307,22 @@ otteniamo questo grafo
 \end{center}
 Se cerchiamo tutte le \emph{componenti connesse} di questo grafo (sottografi del grafo i cui vertici sono tutti collegati tra loro) otteniamo esattamente ciò che stiamo cercando e cioè i nostri set indipendenti, che nell'ordine sono $\{a\}, \{b\}, \{c\}, \{d\}, \{a, c\}, \{a, d\}, \{b, d\}$ e l'insieme vuoto.
 Questa proprietà del grafo complementare vale per qualsiasi tipo di grafo in input, che possiamo sfruttare per il nostro algoritmo.
+Per la rappresentazione del grafo in questo caso può essere utile utilizzare le \emph{liste di adiacenza}. Cioè ad ognuno dei nodi viene associata una lista che contiene tutti i nodi ad esso adiacenti, come nell'esempio seguente (riferito all'ultimo grafo)
+\begin{center}
+\begin{tikzpicture}
+
+  \node[draw, minimum size=5mm] (a) at (0, 0) {a};
+  \node[draw, minimum size=5mm] (c) at (1, 0) {c};
+  \node[draw, minimum size=5mm] (d) at (1.5, 0) {d};
+  
+  \node[draw, minimum size=5mm] (b) at (0, -1) {b};
+  \node[draw, minimum size=5mm] (dd) at (1, -1) {d};
+
+\draw[->] (a) -- (c);
+\draw[->] (b) -- (dd);
+\end{tikzpicture}
+\end{center}
+
 \begin{center}
 \begin{algorithm}[H]
 \SetAlgoLined
