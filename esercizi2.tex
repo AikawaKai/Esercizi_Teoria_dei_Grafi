@@ -386,7 +386,7 @@ Tabella degli insiemi stabili di un ciclo $C_{n,k}$ al variare della lunghezza d
 \vspace{10pt} % Question
 
 \problemAnswer{
-Così come lo abbiamo verificato per i set indipendeti dei cammini $P_{n,k}$, possiamo fare la medesima considerazione per i cicli $C_{n,k}$
+Così come lo abbiamo verificato per i set indipendeti dei cammini $P_{n,k}$, possiamo fare la medesima considerazione per i cicli $C_{n,k}$. Considerando ad esempio il ciclo seguente composto da 6 vertici (e il suo grafo complementare tratteggiato)
 \begin{center}
 \begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
 
@@ -418,6 +418,33 @@ Così come lo abbiamo verificato per i set indipendeti dei cammini $P_{n,k}$, po
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
 \end{center}
+Se volessimo calcolare il numero di set indipendenti di 2 vertici, possiamo prima di tutto considerare il ciclo precedente a questo, privato di un vertice
+\begin{center}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (2, 2) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (4, 0) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -2) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (e) at (0, -2) {e};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (f) at (0, 0) {f};
+  
+  \draw[-] (a) -- (b);
+  \draw[-] (b) -- (c);
+  \draw[-] (e) -- (f);
+  \draw[-] (f) -- (a);
+  
+  \draw[dashed] (a) -- (c);
+  \draw[dashed] (a) -- (e);
+  \draw[dashed] (a) -- (f);
+  \draw[dashed] (b) -- (e);
+  \draw[-] (e) -- (c);
+  \draw[dashed] (f) -- (c);
+  \draw[dashed] (f) -- (b);
+
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+Dove infatti possiamo verificare che esistono ancora alcuni dei set indipendenti di 2 vertici presenti anche nel grafo iniziale. Quindi sappiamo per certo che per calcolare $S(C_{n,k})$ dobbiamo calcolare $S(C_{n-1, k})$ + qualcosa. Questo qualcosa si ottiene dall'aggiunta di un vertice. Ma visto che non vogliamo considerare i vertici adiacenti a questa aggiunta
 \begin{table}[H]
 \centering
 \begin{tabular}{l|l|ccccccccc}
