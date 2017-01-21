@@ -388,7 +388,7 @@ Tabella degli insiemi stabili di un ciclo $C_{n,k}$ al variare della lunghezza d
 \problemAnswer{
 Così come lo abbiamo verificato per i set indipendeti dei cammini $P_{n,k}$, possiamo fare la medesima considerazione per i cicli $C_{n,k}$
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
 
   \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (2, 2) {a};
   \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (4, 0) {b};
@@ -403,6 +403,17 @@ Così come lo abbiamo verificato per i set indipendeti dei cammini $P_{n,k}$, po
   \draw[-] (d) -- (e);
   \draw[-] (e) -- (f);
   \draw[-] (f) -- (a);
+  
+  \draw[dashed] (a) -- (c);
+  \draw[dashed] (a) -- (e);
+  \draw[dashed] (a) -- (d);
+  \draw[dashed] (a) -- (f);
+  \draw[dashed] (b) -- (e);
+  \draw[dashed] (e) -- (c);
+  \draw[dashed] (d) -- (b);
+  \draw[dashed] (f) -- (c);
+  \draw[dashed] (f) -- (b);
+  \draw[dashed] (f) -- (d);
 
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
