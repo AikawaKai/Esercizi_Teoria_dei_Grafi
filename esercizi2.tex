@@ -174,7 +174,7 @@ Per dimostrare la relazione tra il numero di set indipendenti di un cammino e la
 \end{tikzpicture}
 \end{center}
 Sappiamo che esistono 5 insiemi stabili, che sono dati dagli insiemi singoletto $\{a\}, \{b\}, \{c\}$, dall'insieme $\{a,c\}$ e dall'insieme vuoto.
-Cosa accadrebbe se aggiungessimo un nodo d? Avremmo il seguente path:
+Cosa accadrebbe se aggiungessimo un nodo d? Avremmo il seguente cammino:
 \begin{center}
 \begin{tikzpicture}
 
@@ -202,10 +202,48 @@ Tabella degli insiemi stabili di un cammino $P_{n,k}$ al variare della lunghezza
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
+Per calcolare il numero di insiemi stabili con $k$ vertici di un cammino di lunghezza $n$ arbitraria, possiamo fare alcune osservazioni. Prendendo ad esempio il cammino $P_n$ seguente
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+
+\draw[-] (a) -- (b) -- (c) -- (d);
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+come facciamo a calcolare il numero di insiemi stabili composti da 2 vertici? Sicuramente sono presenti quegli insiemi stabili di 2 vertici che otterrei togliendo un vertice, e cioè quelli ottenibili da questo cammino
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+
+\draw[-] (a) -- (b) -- (c);
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+e cioè il solo insieme $\{a, c\}$. Quindi nel calcolo posso aggiungere $S(P_{n-1,k})$. Ma cosa accade aggiungendo un vertice? Dovrei trovare tutti i possibili insiemi stabili composti da 2 elementi, ma che non siano adiacenti al vertice aggiunto alla fine. Come posso calcolarli? Molto banalmente posso rendermi conto che se considero il cammino che non tiene presente del nodo adiacente e quello appena aggiunto,
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+
+\draw[-] (a) -- (b);
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+
+se conto i suoi insiemi stabili di 1 elemento ($S(P_{n-2,k-1})$), (cioè gli insiemi singoletto $\{a\}$ e $\{b\}$) ottengo automaticamente anche il numero di insiemi stabili da 2 elementi. Per ottenerli infatti basta aggiungere agli insiemi stabili da 1 il nuovo vertice $d$, ottenendo gli insiemi stabili validi $\{a, d\}$ e $\{b, d\}$ che corrispondono effettivamente agli insiemi stabili da 2 elementi mancanti. Possiamo quindi dedurre che nel calcolo del numero di insiemi stabili da $k$ vertici di un cammino di lunghezza arbitraria $n$ questa formula ricorsiva
+\[
+S(P_{n,k}) = S(P_{n-2, k-1}) + S(P_{n-1, k})
+\]
+è valida.
 \begin{table}[H]
 \centering
 \begin{tabular}{l|l|ccccccccc}
@@ -224,7 +262,13 @@ $P_{n,k}$             & \multicolumn{10}{c|}{$k$}                               
 \caption{Numero di set indipendenti al variare del numero di vertici $n$ e della larghezza del set $k$}
 \label{my-label}
 \end{table}
-
+}
+\problemAnswer{ 
+Per ottenere il numero totale di set indipendenti di un cammino basta effettuare la seguente somma
+\[
+S(P_n) = \sum_{k=0}^{n}S(P_{n,k})
+\] 
+Dalla tabella è interessante inoltre notare come si sia generato il triangolo di \emph{Fibonacci} (anche se non nella sua consueta forma) che è una diretta conseguenza della formula ricorsiva ottenuta.
 }
 \end{homeworkProblem}
 
