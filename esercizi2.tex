@@ -277,7 +277,35 @@ Scrivere un algoritmo capace di enumerare gli insiemi stabili di un grafo arbitr
 
 \vspace{10pt} % Question
 
-\problemAnswer{ % Answer
+\problemAnswer{
+Prima di scrivere l'algoritmo, possiamo fare una considerazione: se consideriamo il grafo complementare del grafo in input, come nell'esempio seguente 
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+
+\draw[-] (a) -- (b) -- (c) -- (d);
+\end{tikzpicture}
+\end{center}
+otteniamo questo grafo
+\begin{center}
+\begin{tikzpicture}
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+
+\draw[dashed] (a) -- (c);
+\draw[dashed] (a) -- (d);
+\draw[dashed] (b) -- (d);
+\end{tikzpicture}
+\end{center}
+Se cerchiamo tutte le \emph{componenti connesse} di questo grafo (sottografi del grafo i cui vertici sono tutti collegati tra loro) otteniamo esattamente ciò che stiamo cercando e cioè i nostri set indipendenti, che nell'ordine sono $\{a\}, \{b\}, \{c\}, \{d\}, \{a, c\}, \{a, d\}, \{b, d\}$ e l'insieme vuoto.
+Questa proprietà del grafo complementare vale per qualsiasi tipo di grafo in input, che possiamo sfruttare per il nostro algoritmo.
 }
 \end{homeworkProblem}
 \begin{homeworkProblem}[Esercizio 2] 
