@@ -385,7 +385,25 @@ Infine si verifica per ognuno di questi set di $k$ vertici se rappresentano un s
 Tabella degli insiemi stabili di un ciclo $C_{n,k}$ al variare della lunghezza del ciclo $n$ e del numero $k$ di vertici non adiacenti.
 \vspace{10pt} % Question
 
-\problemAnswer{ % Answer
+\problemAnswer{
+\begin{table}[H]
+\centering
+\begin{tabular}{l|l|ccccccccc}
+$C_{n,k}$             & \multicolumn{10}{c|}{$k$}                                                                                                                                                                                                                              \\ \hline
+\multirow{10}{*}{$n$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8} \\ \cline{2-11} 
+                      & 0                     & 1                      &                        &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 1                     & 1                      & 1                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 2                     & 1                      & 2                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 3                     & 1                      & 3                      &                        &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 4                     & 1                      & 4                      & 2                      &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 5                     & 1                      & 5                      & 5                      &                        &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 6                     & 1                      & 6                      & 9                      & 2                      &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 7                     & 1                      & 7                      & 14                     & 7                      &                        &                        &                        &                        &                        \\ \cline{2-2}
+                      & 8                     & 1                      & 8                      & 20                     & 16                     & 2                      &                        &                        &                        &                        \\ \cline{1-2}
+\end{tabular}
+\caption{Numero di set indipendenti da $k$ vertici in un ciclo di $n$ elementi.}
+\label{my-label}
+\end{table}
 }
 \end{homeworkProblem}
 
@@ -394,6 +412,7 @@ Trovare la formula di ricorrenza di un ciclo $C_{n, k}$ al variare della lunghez
 \vspace{10pt} % Question
 
 \problemAnswer{ % Answer
+
 }
 \end{homeworkProblem}
 %----------------------------------------------------------------------------------------
