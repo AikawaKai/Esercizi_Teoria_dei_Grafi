@@ -305,7 +305,7 @@ otteniamo questo grafo
 \draw[dashed] (b) -- (d);
 \end{tikzpicture}
 \end{center}
-Se cerchiamo tutte le \emph{componenti connesse} di questo grafo (sottografi del grafo i cui vertici sono tutti collegati tra loro) otteniamo esattamente ciò che stiamo cercando e cioè i nostri set indipendenti, che nell'ordine sono $\{a\}, \{b\}, \{c\}, \{d\}, \{a, c\}, \{a, d\}, \{b, d\}$ e l'insieme vuoto.
+Se cerchiamo tutte le \emph{componenti complete} di questo grafo (sottografi del grafo i cui vertici sono tutti collegati tra loro) otteniamo esattamente ciò che stiamo cercando e cioè i nostri set indipendenti, che nell'ordine sono $\{a\}, \{b\}, \{c\}, \{d\}, \{a, c\}, \{a, d\}, \{b, d\}$ e l'insieme vuoto.
 
 
 Questa proprietà del grafo complementare vale per qualsiasi tipo di grafo in input, che possiamo sfruttare per il seguente algoritmo
@@ -378,13 +378,14 @@ sottoinsiemi differenti.
 \newline
 \textbf{\textit{IndipendentSet}(set, CompGraph)}
 
-Infine si verifica per ognuno di questi set di $k$ vertici se rappresentano un sottoinsieme completamente connesso (che corrisponde nel grafo complementare ad un set indipendente), e nel caso di esito positivo mandarlo nell'output.
+Infine si verifica per ognuno di questi set di $k$ vertici se rappresentano un sottoinsieme di vertici completo (che corrisponde nel grafo complementare ad un set indipendente), e nel caso di esito positivo mandarlo nell'output.
 
-Per migliorare l'algoritmo si possono fare alcune assunzioni. Come ad esempio quella che data una componente completamente connessa, anche tutti i suoi sottoinsiemi lo sono. Quindi un'idea potrebbe essere quella di ricercare le componenti connesse più grandi del grafo complemento, partendo quindi dagli insiemi di vertici più numerosi.
+Per migliorare l'algoritmo si possono fare alcune assunzioni. Come ad esempio quella che dato un grafo completo, anche tutti i suoi sottoinsiemi lo sono. Quindi un'idea potrebbe essere quella di ricercare i sottografi completi più grandi del grafo complemento, partendo quindi dagli insiemi di vertici più numerosi.
 }
 \end{homeworkProblem}
 \begin{homeworkProblem}[Esercizio 2] 
-Tabella degli insiemi stabili di un ciclo $C_{n,k}$ al variare della lunghezza del ciclo $n$ e del numero $k$ di vertici non adiacenti.
+
+Trovare la formula di ricorrenza di un ciclo $C_{n, k}$ al variare della lunghezza del ciclo $n$ e del numero $k$ di vertici non adiacenti.
 \vspace{10pt} % Question
 
 \problemAnswer{
@@ -446,7 +447,99 @@ Se volessimo calcolare il numero di set indipendenti di 2 vertici, possiamo prim
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
 \end{center}
-Dove infatti possiamo verificare che esistono ancora alcuni dei set indipendenti di 2 vertici presenti anche nel grafo iniziale. Quindi sappiamo per certo che per calcolare $S(C_{n,k})$ dobbiamo calcolare $S(C_{n-1, k})$ + qualcosa. Questo qualcosa si ottiene dall'aggiunta di un vertice. Ma visto che non vogliamo considerare i vertici adiacenti a questa aggiunta
+Dove infatti possiamo verificare che esistono ancora alcuni dei set indipendenti di 2 vertici presenti anche nel grafo iniziale. Quindi sappiamo per certo che per calcolare $S(C_{n,k})$ dobbiamo calcolare $S(C_{n-1, k})$ + qualcosa. Questo qualcosa si ottiene dall'aggiunta di un vertice. Ma cosa accade se aggiungo un vertice? Dovrei trovare tutti gli insiemi stabili che partono dal nuovo vertice in questione, ma non considerando i due vertici adiacenti all'aggiunta ($e, c$). In tal senso quindi mi basterebbe calcolare gli insiemi stabili di $k-1$ vertici con $n-3$ vertici totali $S(n-3,k-1)$, che nel nostro caso corrisponderebbe agli insiemi stabili composti da 1 vertice ($\{f\}, \{a\}, \{b\}$), che sono 3, aggiungendo poi il nuovo vertice $d$ ad ognuno di questi ($\{f, d\}, \{a, d\}, \{b, d\}$), dovremmo ottenere i restanti set indipendenti da 2 vertici, come si evince dall'immagine seguente
+\begin{center}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+
+  \node[circle,fill=red!20,draw, minimum size=6mm] (a) at (-2, 2) {a};
+  \node[circle,fill=red!20,draw, minimum size=6mm] (b) at ( 0, 0) {b};
+  \node[circle,fill=red!20,draw, minimum size=6mm] (f) at (-4, 0) {f};
+  
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (aa) at (4, 2) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (bb) at ( 6, 0) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (ff) at (2, 0) {f};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (4, -4) {d};
+  
+  \draw[-] (a) -- (b);
+  \draw[-] (b) -- (f);
+  \draw[-] (f) -- (a);
+  
+  \draw[-] (aa) -- (bb);
+  \draw[-] (bb) -- (ff);
+  \draw[-] (ff) -- (aa);
+  \draw[dashed] (aa) -- (d);
+  \draw[dashed] (bb) -- (d);
+  \draw[dashed] (ff) -- (d);
+
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+}
+\problemAnswer{
+Purtroppo questo calcolo non tiene conto del fatto che nell'aggiunta di un nuovo nodo, un lato che prima era presente viene poi spezzato, come mostrato nell'immagine seguente
+\begin{center}
+\begin{tikzpicture}[thick,scale=0.6, every node/.style={scale=0.6}]
+
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (2, 2) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (4, 0) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -2) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (e) at (0, -2) {e};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (f) at (0, 0) {f};
+  
+  \draw[-] (a) -- (b);
+  \draw[-] (b) -- (c);
+  \draw[-] (e) -- (f);
+  \draw[-] (f) -- (a);
+  
+  \draw[dashed] (a) -- (c);
+  \draw[dashed] (a) -- (e);
+  \draw[dashed] (a) -- (f);
+  \draw[dashed] (b) -- (e);
+  \draw[-, red] (e) -- (c);
+  \draw[dashed] (f) -- (c);
+  \draw[dashed] (f) -- (b);
+  
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (aa) at (8, 2) {a};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (bb) at (10, 0) {b};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (cc) at (10, -2) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (dd) at (8, -4) {d};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (ee) at (6, -2) {e};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (ff) at (6, 0) {f};
+  
+  \draw[-] (aa) -- (bb);
+  \draw[-] (bb) -- (cc);
+  \draw[-] (cc) -- (dd);
+  \draw[-] (dd) -- (ee);
+  \draw[-] (ee) -- (ff);
+  \draw[-] (ff) -- (aa);
+  
+  \draw[dashed] (aa) -- (cc);
+  \draw[dashed] (aa) -- (ee);
+  \draw[dashed] (aa) -- (dd);
+  \draw[dashed] (aa) -- (ff);
+  \draw[dashed] (bb) -- (ee);
+  \draw[dashed, red] (ee) -- (cc);
+  \draw[dashed] (dd) -- (bb);
+  \draw[dashed] (ff) -- (cc);
+  \draw[dashed] (ff) -- (bb);
+  \draw[dashed] (ff) -- (dd);
+
+%\draw[dashed] (A) -- (C);
+\end{tikzpicture}
+\end{center}
+che rischierebbe così di non essere contato. Per questa motivazione, invece di considerare il passo $n-3$ nel calcolo degli elementi rimanenti, viene considerato il passo $n-2$ che conta invece 4 set indipendenti da 1 vertice, spezzando un lato che prima era presente (come abbiamo mostrato prima per l'aggiunta di un vertice), e che permette quindi di completare la formula ricorsiva
+\[
+S(C_{n,k}) = S(C_{n-1,k}) + S(C_{n-2, k-1})
+\]
+}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Esercizio 2.1] 
+
+Tabella degli insiemi stabili di un ciclo $C_{n,k}$ al variare della lunghezza del ciclo $n$ e del numero $k$ di vertici non adiacenti.
+\vspace{10pt} % Question
+
+\problemAnswer{ % Answer
 \begin{table}[H]
 \centering
 \begin{tabular}{l|l|ccccccccc}
@@ -465,15 +558,6 @@ $C_{n,k}$             & \multicolumn{10}{c|}{$k$}                               
 \caption{Numero di set indipendenti da $k$ vertici in un ciclo di $n$ elementi.}
 \label{my-label}
 \end{table}
-}
-\end{homeworkProblem}
-
-\begin{homeworkProblem}[Esercizio 2.1] 
-Trovare la formula di ricorrenza di un ciclo $C_{n, k}$ al variare della lunghezza del ciclo $n$ e del numero $k$ di vertici non adiacenti.
-\vspace{10pt} % Question
-
-\problemAnswer{ % Answer
-
 }
 \end{homeworkProblem}
 %----------------------------------------------------------------------------------------
