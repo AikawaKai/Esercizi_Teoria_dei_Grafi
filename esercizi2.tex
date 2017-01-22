@@ -371,7 +371,7 @@ Per ottenere il grafo complementare da questa rappresentazione basta semplicemen
 
 Una volta poi ottenuto il grafo complemento si cominciano ad elencare tutti i sottoinsiemi di $k$ vertici (al variare di $k$ da 0 a $n$, che è il numero totale di vertici del grafo) per un totale di
 \[
-\sum_{k=0}^{n}\binom{n}{k}
+\sum_{k=0}^{n}\binom{n}{k} = 2^{n}
 \]
 sottoinsiemi differenti.
 \newline
@@ -379,6 +379,8 @@ sottoinsiemi differenti.
 \textbf{\textit{IndipendentSet}(set, CompGraph)}
 
 Infine si verifica per ognuno di questi set di $k$ vertici se rappresentano un sottoinsieme completamente connesso (che corrisponde nel grafo complementare ad un set indipendente), e nel caso di esito positivo mandarlo nell'output.
+
+Per migliorare l'algoritmo si possono fare alcune assunzioni. Come ad esempio quella che data una componente completamente connessa, anche tutti i suoi sottoinsiemi lo sono. Quindi un'idea potrebbe essere quella di ricercare le componenti connesse più grandi del grafo complemento, partendo quindi dagli insiemi di vertici più numerosi.
 }
 \end{homeworkProblem}
 \begin{homeworkProblem}[Esercizio 2] 
