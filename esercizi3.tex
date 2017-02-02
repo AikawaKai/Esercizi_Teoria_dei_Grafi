@@ -155,7 +155,7 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}[Esercizio 1] 
-Dimostrare che il numero di partizioni stabili di un path di n elementi, è uguale al numero di partizioni di un insieme di n-1 elementi tramite biiezione.
+Dimostrare che il numero di partizioni stabili di un path di $n$ elementi, è uguale al numero di partizioni di un insieme di $n-1$ elementi tramite biiezione.
 \newline
 \newline
 \textbf{N.B.} Le partizioni stabili sono quelle partizioni che generano blocchi in cui i vertici non sono adiacenti.
@@ -179,13 +179,21 @@ Quest'ultimo genera le seguenti partizioni stabili:
 \[
 |1 3|2|
 \]
-Se consideriamo l'insieme di n-1 elementi, parallelo al precedente cammino e cioè $\{1, 2\}$, possiamo verificare che possiede le seguenti partizioni:
+Se consideriamo l'insieme di $n-1$ elementi, parallelo al precedente cammino e cioè $\{1, 2\}$, possiamo verificare che possiede le seguenti partizioni:
 \[
 |1|2|
 \]
 \[
 |1  2|
 \]
+Notiamo che il numero di partizioni stabili del path di $n=3$ elementi è effettivamente uguale al numero di partizioni dell'insieme composto da $n-1$ elementi (hanno entrambi 2 partizioni.)
+Come passare da una partizione all'altra? Prima di tutto useremo per comodità la notazione dei numeri naturali per i vertici del path e per gli elementi dell'insieme. Per passare dalle partizioni stabili di un cammino a quelle dell'insieme si possono eseguire 4 passaggi:
+\begin{enumerate}
+\item Si ordinano le partizioni in base all'elemento più piccolo presente nella partizione.
+\item Se l'elemento $n$ ($n$ inteso come etichetta numerica associata al vertice) si trova in una partizione più grande nell'ordinamento (ordinamento definito nel punto 1), rispetto all'elemento $n-1$, si sposta l'elemento nella partizione inferiore.
+\item Si rinominano le etichette dei numeri, sottraendovi 1
+\item Si eliminano i nodi con etichetta 0
+\end{enumerate}
 \begin{center}
 \begin{tikzpicture}
 
