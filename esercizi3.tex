@@ -159,7 +159,11 @@ Dimostrare che il numero di partizioni stabili di un path di $n$ elementi, è ug
 \newline
 \newline
 \textbf{N.B.} Le partizioni stabili sono quelle partizioni che generano blocchi in cui i vertici non sono adiacenti.
-\vspace{10pt} % Question
+\vspace{20pt} % Question
+\newline
+\newline
+\newline
+\newline
 \problemAnswer{ % Answer
 Prendiamo ad esempio il sequente path:
 \begin{center}
@@ -187,9 +191,11 @@ Se consideriamo l'insieme di $n-1$ elementi, parallelo al precedente cammino e c
 |1  2|
 \]
 Notiamo che il numero di partizioni stabili del path di $n=3$ elementi è effettivamente uguale al numero di partizioni dell'insieme composto da $n-1$ elementi (hanno entrambi 2 partizioni.)
+}
+\problemAnswer{
 Come passare da una partizione all'altra? Prima di tutto useremo per comodità la notazione dei numeri naturali per i vertici del path e per gli elementi dell'insieme. Per passare dalle partizioni stabili di un cammino a quelle dell'insieme si possono eseguire 4 passaggi:
 \begin{enumerate}
-\item Si ordinano le partizioni in base all'elemento più piccolo presente nella partizione.
+\item Si ordinano le partizioni in base all'elemento più piccolo presente nel blocco.
 \[
 |1|2|3|
 \]
@@ -197,14 +203,14 @@ Come passare da una partizione all'altra? Prima di tutto useremo per comodità l
 |1 3|2|
 \]
 (In questo caso restano uguali)
-\item Se l'elemento $n$ ($n$ inteso come etichetta numerica associata al vertice) si trova in una partizione più grande nell'ordinamento (ordinamento definito nel punto 1), rispetto all'elemento $n-1$, si sposta l'elemento nella partizione inferiore.
+\item Se l'elemento $n$ ($n$ inteso come etichetta numerica associata al vertice) si trova in un blocco più grande nell'ordinamento (ordinamento definito nel punto 1), rispetto all'elemento $n-1$, si sposta l'elemento nel blocco inferiore.
 \[
 |12|3|-|
 \]
 \[
 |123|-|
 \]
-\item Si eliminano le partizioni vuote e si rinominano le etichette dei numeri, sottraendovi 1
+\item Si eliminano i blocchi vuoti e si rinominano le etichette dei numeri, sottraendovi 1
 \[
 |01|2|
 \]
@@ -220,9 +226,11 @@ Come passare da una partizione all'altra? Prima di tutto useremo per comodità l
 \]
 Che effettivamente corrispondono alle nostre partizioni dell'insieme composto da $n-1$ elementi.
 \end{enumerate}
+Se si esegue il procedimento all'inverso, punto per punto, si ritorna alla partizione del path.
 }
+\newpage
 \problemAnswer{
-
+Volendo fare un esempio più complesso, prendiamo il seguente path con 4 vertici:
 \begin{center}
 \begin{tikzpicture}
 
@@ -235,8 +243,117 @@ Che effettivamente corrispondono alle nostre partizioni dell'insieme composto da
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
 \end{center}
+Il quale ha le seguenti 5 partizioni stabili:
+\[
+|1|2|3|4|
+\]
+\[
+|13|24|
+\]
+\[
+|1|3|24|
+\]
+\[
+|13|2|4|
+\]
+\[
+|14|2|3|
+\]
+
+L'insieme corrispondente con 4-1=3 elementi $\{1,2,3\}$, ha sempre 5 partizioni:
+\[
+|1|2|3|
+\]
+\[
+|12|3|
+\]
+\[
+|1|23|
+\]
+\[
+|13|2|
+\]
+\[
+|123|
+\]
+\[
+|1|2|3|
+\]
+
+Partiamo sempre dalle partizioni stabili del cammino, ed eseguiamo l'ordinamento dei blocchi in base all'elemento più piccolo presente negli stessi \emph{(passo 1)}.
+
+\[
+|1|2|3|4|
+\]
+\[
+|13|24|
+\]
+\[
+|1|24|3|
+\]
+\[
+|13|2|4|
+\]
+\[
+|14|2|3|
+\]
+
+Poi spostiamo il vertice $n$ nel blocco precedente, se $n$ si trova in un blocco superiore a quello in cui è presente il vertice $n-1$ \emph{(passo 2)}:
+\[
+|12|3|4|-|
+\]
+\[
+|1234|-|
+\]
+\[
+|12|34|-|
+\]
+\[
+|123|4|-|
+\]
+\[
+|124|3|-|
+\]
 }
+\problemAnswer{
+Rinominiamo le etichette dei vertici facendo un -1 ed eliminiamo i blocchi vuoti \emph{(passo 3)}:
+\[
+|01|2|3|
+\]
+\[
+|0123|
+\]
+\[
+|01|23|
+\]
+\[
+|012|3|
+\]
+\[
+|013|2|
+\]
+
+Infine eliminiamo gli 0 \emph{(passo 4)}:
+\[
+|1|2|3|
+\]
+\[
+|123|
+\]
+\[
+|1|23|
+\]
+\[
+|12|3|
+\]
+\[
+|13|2|
+\]
+Che sono effettivamente le stesse partizioni dell'insieme composto da $n-1$ elementi. Eseguendo il passaggio all'inverso si può facilmente poi tornare alle partizioni del path.
+}
+
 \end{homeworkProblem}
+
 
 %----------------------------------------------------------------------------------------
 
