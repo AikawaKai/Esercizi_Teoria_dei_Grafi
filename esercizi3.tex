@@ -190,10 +190,39 @@ Notiamo che il numero di partizioni stabili del path di $n=3$ elementi è effett
 Come passare da una partizione all'altra? Prima di tutto useremo per comodità la notazione dei numeri naturali per i vertici del path e per gli elementi dell'insieme. Per passare dalle partizioni stabili di un cammino a quelle dell'insieme si possono eseguire 4 passaggi:
 \begin{enumerate}
 \item Si ordinano le partizioni in base all'elemento più piccolo presente nella partizione.
+\[
+|1|2|3|
+\]
+\[
+|1 3|2|
+\]
+(In questo caso restano uguali)
 \item Se l'elemento $n$ ($n$ inteso come etichetta numerica associata al vertice) si trova in una partizione più grande nell'ordinamento (ordinamento definito nel punto 1), rispetto all'elemento $n-1$, si sposta l'elemento nella partizione inferiore.
-\item Si rinominano le etichette dei numeri, sottraendovi 1
+\[
+|12|3|-|
+\]
+\[
+|123|-|
+\]
+\item Si eliminano le partizioni vuote e si rinominano le etichette dei numeri, sottraendovi 1
+\[
+|01|2|
+\]
+\[
+|012|
+\]
 \item Si eliminano i nodi con etichetta 0
+\[
+|1|2|
+\]
+\[
+|12|
+\]
+Che effettivamente corrispondono alle nostre partizioni dell'insieme composto da $n-1$ elementi.
 \end{enumerate}
+}
+\problemAnswer{
+
 \begin{center}
 \begin{tikzpicture}
 
