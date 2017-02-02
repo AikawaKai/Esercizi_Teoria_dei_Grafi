@@ -156,31 +156,45 @@
 
 \begin{homeworkProblem}[Esercizio 1] 
 Dimostrare che il numero di partizioni stabili di un path di n elementi, è uguale al numero di partizioni di un insieme di n-1 elementi tramite biiezione.
+\newline
+\newline
+\textbf{N.B.} Le partizioni stabili sono quelle partizioni che generano blocchi in cui i vertici non sono adiacenti.
 \vspace{10pt} % Question
-
 \problemAnswer{ % Answer
-
+Prendiamo ad esempio il sequente path:
 \begin{center}
 \begin{tikzpicture}
 
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (1) at (0, 0) {1};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (2) at (2, 1) {2};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (3) at (4, -0.5) {3};
 
-\draw[-] (a) -- (b) -- (c);
-%\draw[dashed] (A) -- (C);
+\draw[-] (1) -- (2) -- (3);
 \end{tikzpicture}
 \end{center}
-
+Quest'ultimo genera le seguenti partizioni stabili:
+\[
+|1|2|3|
+\]
+\[
+|1 3|2|
+\]
+Se consideriamo l'insieme di n-1 elementi, parallelo al precedente cammino e cioè $\{1, 2\}$, possiamo verificare che possiede le seguenti partizioni:
+\[
+|1|2|
+\]
+\[
+|1  2|
+\]
 \begin{center}
 \begin{tikzpicture}
 
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (a) at (0, 0) {a};
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (b) at (2, 1) {b};
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (c) at (4, -0.5) {c};
-  \node[circle,fill=blue!20,draw, minimum size=6mm] (d) at (6, 0) {d};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (1) at (0, 0) {1};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (2) at (2, 1) {2};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (3) at (4, -0.5) {3};
+  \node[circle,fill=blue!20,draw, minimum size=6mm] (4) at (6, 0) {4};
 
-\draw[-] (a) -- (b) -- (c) -- (d);
+\draw[-] (1) -- (2) -- (3) -- (4);
 %\draw[dashed] (A) -- (C);
 \end{tikzpicture}
 \end{center}
